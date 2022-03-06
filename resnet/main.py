@@ -20,7 +20,6 @@ def main():
     data_list.sort()
     data_list = [data_list[i:i+3] for i in range(0, len(data_list), 3)]
 
-    # label read
     with open('imagenet_classes.txt', 'r') as f:
         categories = [s.strip() for s in f.readlines()]
 
@@ -28,7 +27,7 @@ def main():
     fig = plt.figure(figsize=(10,6))
     gs = GridSpec(nrows=3, ncols=2, height_ratios=[1,1,1], width_ratios=[1,1])
 
-    for shot in data_list:
+    for i, shot in enumerate(data_list):
         filename = shot[1]
         input_image = Image.open(data_path + filename)
         preprocess = transforms.Compose([
